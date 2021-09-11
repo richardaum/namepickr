@@ -6,6 +6,7 @@ import {
 import React, { FC, useEffect, useState, VFC } from "react";
 
 import { colors } from "./colors";
+import { config } from "./config";
 import { theme } from "./theme";
 
 const ColorMode: VFC<{ onChange(colorMode: IColorMode): void }> = ({
@@ -20,7 +21,7 @@ const ColorMode: VFC<{ onChange(colorMode: IColorMode): void }> = ({
 
 export const AppThemeProvider: FC = (props) => {
   const [colorMode, setColorMode] = useState<IColorMode>(
-    theme.config.initialColorMode
+    config.initialColorMode
   );
 
   return (
@@ -29,7 +30,7 @@ export const AppThemeProvider: FC = (props) => {
       resetCSS
       theme={{
         ...theme,
-        colors: { ...theme.colors, ...colors[colorMode] },
+        colors: { ...theme.colors /* , ...colors[colorMode] */ },
       }}
     >
       <ColorMode onChange={setColorMode} />

@@ -1,13 +1,11 @@
-import { SystemStyleObject } from "@chakra-ui/system";
+import { mode, Styles } from "@chakra-ui/theme-tools";
 
-import { Theme } from "./theme";
-
-export const styles = {
-  global: (props: { theme: Theme }): SystemStyleObject => {
+export const styles: Styles = {
+  global: (props) => {
     return {
       body: {
-        bg: props.theme.colors.bg,
-        color: props.theme.colors.textPrimary,
+        color: mode("brand.900", "brand.100")(props),
+        bg: mode("brand.100", "brand.900")(props),
       },
     };
   },
