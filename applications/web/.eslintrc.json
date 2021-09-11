@@ -8,6 +8,9 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
+  "settings": {
+    "react": { "version": "detect" }
+  },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -19,6 +22,7 @@
   "plugins": ["react", "@typescript-eslint", "simple-import-sort"],
   "rules": {
     "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "simple-import-sort/exports": "error",
+    "react/prop-types": "off"
   }
 }

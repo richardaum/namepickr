@@ -28,7 +28,7 @@ Trace:
 
 npm manifest: 
   {
-    "name": "web2",
+    "name": "web",
     "version": "1.0.0",
     "license": "MIT",
     "scripts": {
