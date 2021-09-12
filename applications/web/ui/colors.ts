@@ -1,16 +1,16 @@
 export const colors = {
   brand: {
-    100: "#f9f7fd",
-    200: "#c9b1f0",
-    300: "#ad8be8",
-    400: "#9264e1",
-    500: "#773dd9",
-    600: "#5f31ae",
-    700: "#472582",
-    800: "#301857",
-    900: "#241240",
+    100: '#f9f7fd',
+    200: '#cdb8f1',
+    300: '#ac89e8',
+    400: '#8b59df',
+    500: '#6a2ad5',
+    600: '#5220a6',
+    700: '#3b1776',
+    800: '#230e47',
+    900: '#110722',
   },
-};
+}
 
 export const decisionColors = {
   backgroundColor: {
@@ -21,4 +21,4 @@ export const decisionColors = {
     // dark: theme.colors.purple["100"],
     // light: theme.colors.purple["900"],
   },
-} as const;
+} as const

@@ -3,16 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gen:theme-typings": "chakra-cli tokens ui/theme.ts",
+    "postinstall": "npm run gen:theme-typings"
   },
   "dependencies": {
+    "@chakra-ui/cli": "^1.5.0",
     "@chakra-ui/react": "^1.6.7",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@typegoose/typegoose": "^8.3.0",
+    "axios": "^0.21.4",
     "framer-motion": "^4",
     "mongoose": "~5.13.8",
     "next": "11.1.2",

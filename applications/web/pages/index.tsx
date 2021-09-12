@@ -1,17 +1,47 @@
 import { Button } from '@chakra-ui/button'
-import { Box } from '@chakra-ui/layout'
-import { useColorMode } from '@chakra-ui/react'
-import React, { VFC } from 'react'
+import { Input } from '@chakra-ui/input'
+import { Box, Flex } from '@chakra-ui/layout'
+import axios from 'axios'
+import React, { useState, VFC } from 'react'
+
+import { Room } from '../models/RoomModel'
 
 const Index: VFC = () => {
-  const { toggleColorMode } = useColorMode()
+  const [room, setRoom] = useState<Required<Room>>()
+  const [name, setName] = useState<string>()
+
+  const createRoom = async () => {
+    const { data: room } = await axios.post<Required<Room>>('/api/rooms')
+    setRoom(room)
+  }
+
+  const joinDraw = async () => {
+    await axios.post(`/api/rooms/${room?._id.toString()}/users`, { name, room })
+  }
 
   return (
-    <Box p="6">
-      <Button variant="solid" onClick={toggleColorMode}>
-        Change color
+    <Flex flexDirection="column" alignItems="flex-start" p="6" css="gap: 12px">
+      <Button variant="solid" onClick={createRoom}>
+        Iniciar um sorteio
       </Button>
-    </Box>
+
+      <Flex>
+        <Button
+          variant="solid"
+          onClick={joinDraw}
+          flexShrink={0}
+          disabled={!room}
+        >
+          Participar do sorteio
+        </Button>
+
+        <Input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Digite seu nome aqui"
+        />
+      </Flex>
+    </Flex>
   )
 }
 
