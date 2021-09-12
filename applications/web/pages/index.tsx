@@ -9,14 +9,22 @@ import { Room } from '../models/RoomModel'
 const Index: VFC = () => {
   const [room, setRoom] = useState<Required<Room>>()
   const [name, setName] = useState<string>()
+  const [pickedUser, setPickedUser] = useState<string>()
 
   const createRoom = async () => {
     const { data: room } = await axios.post<Required<Room>>('/api/rooms')
     setRoom(room)
   }
 
-  const joinDraw = async () => {
+  const joinRoom = async () => {
     await axios.post(`/api/rooms/${room?._id.toString()}/users`, { name, room })
+  }
+
+  const pickUser = async () => {
+    const { data: users } = await axios.post(
+      `/api/rooms/${room?._id.toString()}/users/pick`
+    )
+    setPickedUser(users[0])
   }
 
   return (
@@ -28,7 +36,7 @@ const Index: VFC = () => {
       <Flex>
         <Button
           variant="solid"
-          onClick={joinDraw}
+          onClick={joinRoom}
           flexShrink={0}
           disabled={!room}
         >
@@ -41,6 +49,16 @@ const Index: VFC = () => {
           placeholder="Digite seu nome aqui"
         />
       </Flex>
+
+      <Button disabled={!room} onClick={pickUser}>
+        Sortear
+      </Button>
+
+      {pickedUser && (
+        <pre>
+          <code>{JSON.stringify(pickedUser, null, 2)}</code>
+        </pre>
+      )}
     </Flex>
   )
 }

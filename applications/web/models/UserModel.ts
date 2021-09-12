@@ -7,11 +7,11 @@ import { Room } from './RoomModel'
 export class User extends TimeStamps {
   public _id?: ObjectId
 
-  @prop()
-  public name?: string
+  @prop({ required: true })
+  public name!: string
 
-  @prop()
-  public room?: Room
+  @prop({ required: true })
+  public room!: Room
 }
 
 export const UserModel = getModelForClass(User, {

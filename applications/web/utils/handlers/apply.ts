@@ -7,8 +7,10 @@ export const makeApplyHandlers = (...handlers: Handler[]): Handler => {
         const modelSelector = handlers[i]
         const handler = modelSelector(model)
         const stop = await handler(req, res)
-        if (stop) break
+        if (stop) return
       }
+
+      res.status(400).end()
     }
   }
 }
