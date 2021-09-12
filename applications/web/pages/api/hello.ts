@@ -1,13 +1,12 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-type Data = {
-  name: string
-}
+import connect from '../../middleware/database'
+import { RoomModel } from '../../models/room'
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: 'John Doe' })
-}
+export default connect(
+  async (req: NextApiRequest, res: NextApiResponse<any>) => {
+    const rooms = await RoomModel.find()
+    res.status(200).json(rooms)
+  }
+)
