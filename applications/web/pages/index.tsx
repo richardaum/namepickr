@@ -27,6 +27,12 @@ const Index: VFC = () => {
     setPickedUser(users[0])
   }
 
+  const closeRoom = async () => {
+    setRoom(undefined)
+    setPickedUser(undefined)
+    await axios.delete(`/api/rooms/${room?._id.toString()}`)
+  }
+
   return (
     <Flex flexDirection="column" alignItems="flex-start" p="6" css="gap: 12px">
       <Button variant="solid" onClick={createRoom}>
@@ -59,6 +65,10 @@ const Index: VFC = () => {
           <code>{JSON.stringify(pickedUser, null, 2)}</code>
         </pre>
       )}
+
+      <Button disabled={!room} onClick={closeRoom}>
+        Encerrar sorteio
+      </Button>
     </Flex>
   )
 }
