@@ -15,6 +15,8 @@
     "@chakra-ui/react": "^1.6.7",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@fontsource/bebas-neue": "^4.5.0",
+    "@fontsource/niconne": "^4.5.0",
     "@typegoose/typegoose": "^8.3.0",
     "axios": "^0.21.4",
     "framer-motion": "^4",

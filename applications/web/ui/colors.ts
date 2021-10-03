@@ -10,6 +10,10 @@ export const colors = {
     800: '#230e47',
     900: '#110722',
   },
+  brightPink: { 500: '#ED64A6' },
+  brightBlue: { 500: '#0014ff' },
+  brightPurple: { 500: '#5f00ff ' },
+  brightGreen: { 500: '#02ff50 ' },
 }
 
 export const decisionColors = {
